@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "name": "Admin",
+      "password": "Admin@123",
+      "admin": true,
+      "id": 2
+    },
+    {
+      "name": "Brandon Santana",
+      "password": "password1",
+      "admin": false,
+      "id": 2
+    },
+    {
+      "name": "Kristen Stinnett",
+      "password": "password1",
+      "admin": false,
+      "id": 3
+    }
+  ],
+  "reviews": []
+}

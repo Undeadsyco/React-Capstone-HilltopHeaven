@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
-function App() {
+import { Header, PrivateRoute } from './Components';
+import { Login, Home } from './Views';
+import { Container } from './GlobalStyles';
+
+import actions from "./Actions";
+
+const App = (props) => {
+  const { onLogin, user, isLoggedIn } = props;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header isLoggedIn={isLoggedIn} />
+      <div className="body">
+        <Routes>
+          <Route path="/" element={<Login submit={onLogin} />} />
+          <Route path="/*" element={<PrivateRoute />}>
+            <Route path="welcome" element={<Home user={user} />} />
+          </Route>
+        </Routes>
+      </div>
+    </Container>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.isLoggedIn,
+  user: state.user
+});
+
+const mapDispatchToProps = (dispatch) => {
+  const { login } = actions;
+
+  return ({
+    onLogin: (body) => login(body),
+  });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
