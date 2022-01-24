@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RiHotelLine } from 'react-icons/ri';
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn, admin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,6 +19,8 @@ const Header = ({ isLoggedIn }) => {
       </div>
       {isLoggedIn && 
         <nav>
+          {!admin && <Link to='/reviewForm'>Send Feedback</Link>}
+          <Link to='/reviews'>{admin ? 'View Feedback' : 'Know Our Feedback'}</Link>
           <button onClick={() => logout()}>Logout</button>
         </nav>
       }

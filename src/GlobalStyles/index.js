@@ -14,6 +14,32 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
     }
+
+    & > nav {
+      display: flex;
+      align-items: center;
+      padding-right: 20px;
+
+      & > a {
+        color: black;
+        text-decoration: none;
+        margin: 0 10px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      & > button {
+        border: none;
+        background-color: transparent;
+        margin: 0 10px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   & .body {

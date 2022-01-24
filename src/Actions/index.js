@@ -12,6 +12,23 @@ const actions = {
       res = await req.data 
     }
     return res;
+  },
+  makeReview: async (body) => {
+    const req = await axios.post(`${url}/reviews`, body);
+    const res = await req.data;
+    return res;
+  },
+  getReviews: async (filter) => {
+    const req = await axios.get(`${url}/reviews?area=${filter}`);
+    const res = await req.data;
+    console.log(res)
+    return res;
+  },
+  removeReview: async (id) => {
+    const req = await axios.delete(`${url}/reviews/${id}`);
+    const res = await req.data;
+    console.log(res);
+    return res;
   }
 };
 

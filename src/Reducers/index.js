@@ -1,6 +1,7 @@
 const initialState = {
   isLoggedIn: false,
-  user: {}
+  user: {},
+  reviews: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         user: {}
+      }
+    case 'GET_REVIEWS':
+      return {
+        ...state,
+        reviews: action.data,
       }
     default:
       return {
